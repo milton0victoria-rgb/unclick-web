@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@unclick - Soporte Técnico, Streaming y Trámites en Cali y Jamundí</title>
+    <style>
+        :root {
+            --bg-color: #050507;
+            --card-bg: rgba(18, 18, 22, 0.88);
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --text-main: #f8f9fa;
+            --text-muted: #b0b0bc;
+            --whatsapp: #25d366;
+            --whatsapp-hover: #20ba5a;
+        }
+        * { box-sizing: border-box; }
+        
+        /* FONDO DINÁMICO EN MOVIMIENTO */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 15% 25%, rgba(212, 175, 55, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(56, 189, 248, 0.07) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+            background-size: 200% 200%;
+            animation: backgroundShift 18s ease infinite alternate;
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes backgroundShift {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 100%; }
+        }
+
+        header {
+            background: rgba(5, 5, 7, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--gold);
+            padding: 3rem 1rem 2rem 1rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .logo-img {
+            display: block;
+            margin: 0 auto 1.2rem auto;
+            max-width: 260px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 0.4rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
+        }
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2.5rem 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        h2 {
+            border-left: 4px solid var(--gold);
+            padding-left: 12px;
+            margin-top: 3.5rem;
+            color: var(--gold);
+            font-size: 1.8rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h2 span {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.5rem;
+        }
+        .card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
+        }
+        .card-img-container {
+            width: 100%;
+            height: 110px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 8px;
+        }
+        .card img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+        .support-banner {
+            background: var(--card-bg);
+            border: 2px solid var(--gold);
+            border-radius: 14px;
+            overflow: hidden;
+            margin-top: 1.5rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+        @media (min-width: 768px) {
+            .support-banner {
+                grid-template-columns: 1.2fr 1fr;
+            }
+        }
+        .support-img-box {
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .support-img-box img {
+            width: 100%;
+            max-height: 380px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .support-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .support-content h3 {
+            color: var(--gold);
+            font-size: 1.6rem;
+            margin-top: 0;
+        }
+        .support-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+            color: var(--text-muted);
+        }
+        .support-list li {
+            padding: 6px 0;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .support-list li span {
+            color: var(--whatsapp);
+            font-weight: bold;
+        }
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--whatsapp);
+            color: white;
+            padding: 0.9rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn:hover {
+            background-color: var(--whatsapp-hover);
+            transform: scale(1.02);
+        }
+        footer {
+            text-align: center;
+            padding: 2.5rem 1rem;
+            background: rgba(5, 5, 7, 0.95);
+            color: var(--text-muted);
+            margin-top: 4rem;
+            border-top: 3px solid var(--gold);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+        footer p { margin: 0.4rem 0; }
+        footer .contact-info {
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="{{ url_for('static', filename='unclick_logo_web.jpg') }}" alt="Logo @unclick" class="logo-img">
+        <div class="badge">RESPALDADO Y REGISTRADO EN CÁMARA DE COMERCIO</div>
+        <p>Tecnología en su mejor versión. Soporte, Streaming y Trámites Digitales en Cali y Jamundí.</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- TRÁMITES Y CERTIFICADOS VIRTUALES -->
+        <h2><span>▪</span> Trámites y Certificados Virtuales</h2>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <div class="card-img-container">
+                        <img src="{{ url_for('static', filename='snr logo.jpg') }}" alt="Certificado de Libertad y Tradición">
+                    </div>
+                    <h3>Certificado de Libertad y Tradición</h3>
+                    <p>Gestión rápida y segura de tu certificado inmobiliario directamente ante la Superintendencia de Notariado y Registro sin filas ni demoras.</p>
+                </div>
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20necesito%20gestionar%20un%20Certificado%20de%20Libertad%20y%20Tradición." class="btn" target="_blank">
+                    💬 Solicitar por WhatsApp
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-img-container">
+                        <img src="{{ url_for('static', filename='camara comercio cali.jpg') }}" alt="Cámara de Comercio">
+                    </div>
+                    <h3>Cámara de Comercio y Trámites</h3>
+                    <p>Asesoría y gestión en trámites mercantiles, certificados de existencia y representación comercial para tu negocio o empresa.</p>
+                </div>
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20necesito%20asistencia%20con%20trámites%20de%20Cámara%20de%20Comercio." class="btn" target="_blank">
+                    💬 Solicitar por WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <!-- STREAMING Y PLATAFORMAS -->
+        <h2><span>▪</span> Streaming y Entretenimiento Digital</h2>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <div class="card-img-container">
+                        <img src="{{ url_for('static', filename='Netflix logo.png') }}" alt="Netflix">
+                    </div>
+                    <h3>Netflix 4K / Estándar</h3>
+                    <p>Pantallas y perfiles de alta calidad con estabilidad garantizada, velocidad y soporte inmediato ante cualquier novedad.</p>
+                </div>
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20una%20cuenta%20de%20Netflix." class="btn" target="_blank">
+                    🛒 Comprar por WhatsApp
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-img-container">
+                        <img src="{{ url_for('static', filename='HBO-Max logo.jpg') }}" alt="Max / HBO">
+                    </div>
+                    <h3>Max (HBO)</h3>
+                    <p>Disfruta de las mejores series exclusivas, películas de estreno y contenido en máxima definición al instante.</p>
+                </div>
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Max." class="btn" target="_blank">
+                    🛒 Comprar por WhatsApp
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-img-container">
+                        <img src="{{ url_for('static', filename='disney logo.jpg') }}" alt="Disney+">
+                    </div>
+                    <h3>Disney+</h3>
+                    <p>Todo el universo de Disney, Pixar, Marvel y Star al mejor precio del mercado local con entrega inmediata.</p>
+                </div>
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Disney+." class="btn" target="_blank">
+                    🛒 Comprar por WhatsApp
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-img-container">
+                        <img src="{{ url_for('static', filename='prime video logo.png') }}" alt="Prime Video">
+                    </div>
+                    <h3>Prime Video</h3>
+                    <p>Películas, series galardonadas y tus envíos preferenciales con acceso inmediato y cuentas seguras.</p>
+                </div>
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Prime%20Video." class="btn" target="_blank">
+                    🛒 Comprar por WhatsApp
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-img-container">
+                        <img src="{{ url_for('static', filename='youtube premium.png') }}" alt="YouTube Premium">
+                    </div>
+                    <h3>YouTube Premium</h3>
+                    <p>Videos sin interrupciones publicitarias, reproducción en segundo plano y YouTube Music incluido sin límites.</p>
+                </div>
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20YouTube%20Premium." class="btn" target="_blank">
+                    🛒 Comprar por WhatsApp
+                </a>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="card-img-container">
+                        <img src="{{ url_for('static', filename='iptv logo.png') }}" alt="IPTV Premium">
+                    </div>
+                    <h3>Servicio IPTV Premium</h3>
+                    <p>Parrilla completa de canales nacionales e internacionales, deportes en vivo y eventos especiales en tu Smart TV.</p>
+                </div>
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20información%20sobre%20el%20servicio%20IPTV." class="btn" target="_blank">
+                    🛒 Cotizar IPTV por WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <!-- SOPORTE TÉCNICO DESTACADO -->
+        <h2><span>▪</span> Soporte Técnico PC & Celulares</h2>
+        
+        <div class="support-banner">
+            <div class="support-img-box">
+                <img src="{{ url_for('static', filename='soporte pc y celular.jpg') }}" alt="Soporte Técnico PC y Celulares">
+            </div>
+            <div class="support-content">
+                <div>
+                    <h3>Servicio Profesional Garantizado</h3>
+                    <ul class="support-list">
+                        <li><span>✔</span> Aumento de Memoria RAM</li>
+                        <li><span>✔</span> Cambio e instalación de Discos Sólidos (SSD)</li>
+                        <li><span>✔</span> Instalación de Windows optimizado (LTSC)</li>
+                        <li><span>✔</span> Configuración de Paquete Office</li>
+                        <li><span>✔</span> Desbloqueo y retiro de Cuentas Google (FRP) en Android</li>
+                        <li><span>✔</span> Instalación de Cámaras de Seguridad (CCTV)</li>
+                    </ul>
+                </div>
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20necesito%20soporte%20técnico%20para%20mi%20computador%20o%20celular." class="btn" target="_blank">
+                    💬 Cotizar Soporte por WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <!-- Y MUCHO MÁS... -->
+        <h2><span>▪</span> Y mucho más...</h2>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <h3>Soluciones Tecnológicas a Medida</h3>
+                    <p>¿Necesitas soporte de software a distancia, configuraciones de red o asesoría digital personalizada? Consúltanos lo que requieras con atención inmediata.</p>
+                </div>
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20tengo%20una%20consulta%20sobre%20otro%20servicio%20tecnológico." class="btn" target="_blank">
+                    💬 Consultar por WhatsApp
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 @unclick - Todos los derechos reservados.</p>
+        <p class="contact-info">Contáctanos en WhatsApp: 317 817 0622</p>
+        <p>Facebook: A UN CLICK JAMUNDI | Correo: AUNCLICK9@GMAIL.COM</p>
+    </footer>
+
+</body>
+</html>
