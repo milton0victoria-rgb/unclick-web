@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@unclick - Soporte Técnico, Streaming y Trámites en Cali y Jamundí</title>
+    <meta name="description" content="Soporte técnico para PC y celulares, servicios de streaming y trámites digitales en Cali y Jamundí. Atención personalizada por WhatsApp.">
+    <meta property="og:title" content="@unclick - Tecnología, soporte y trámites">
+    <meta property="og:description" content="Soporte técnico para PC y celulares, servicios de streaming y trámites digitales en Cali y Jamundí.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="{{ url_for('static', filename='unclick_logo_web.jpg', _external=True) }}">
     <link rel="icon" href="{{ url_for('static', filename='unclick_logo_web.jpg') }}" type="image/jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,6 +42,11 @@
 
         h1, h2, h3 {
             font-family: 'Sora', 'Segoe UI', sans-serif;
+        }
+
+        header h1 {
+            font-size: clamp(1.5rem, 4vw, 2.4rem);
+            margin: 0.5rem 0;
         }
 
         @keyframes backgroundShift {
@@ -249,6 +259,10 @@
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
             transform: translateY(-2px) scale(1.02);
         }
+        a:focus-visible {
+            outline: 3px solid var(--gold-light);
+            outline-offset: 4px;
+        }
         footer {
             text-align: center;
             padding: 2.5rem 1rem;
@@ -275,8 +289,17 @@
             header { padding: 2rem 1rem 1.5rem; }
             .logo-img { max-width: 180px; }
             header p { font-size: 0.95rem; }
-            h2 { font-size: 1.4rem; margin-top: 2.5rem; }
+            h2 { font-size: 1.25rem; margin-top: 2.5rem; }
             .container { padding: 1.5rem 1rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
@@ -285,10 +308,11 @@
     <header>
         <img src="{{ url_for('static', filename='unclick_logo_web.jpg') }}" alt="Logo @unclick" class="logo-img">
         <div class="badge">RESPALDADO Y REGISTRADO EN CÁMARA DE COMERCIO</div>
-        <p>Tecnología en su mejor versión. Soporte, Streaming y Trámites Digitales en Cali y Jamundí.</p>
+        <h1>Tecnología en su mejor versión</h1>
+        <p>Soporte, streaming y trámites digitales en Cali y Jamundí, con atención personalizada.</p>
     </header>
 
-    <div class="container">
+    <main class="container">
 
         <!-- TRÁMITES Y CERTIFICADOS VIRTUALES -->
         <h2><span>▪</span> Trámites y Certificados Virtuales</h2>
@@ -296,12 +320,12 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='snr logo.jpg') }}" alt="Certificado de Libertad y Tradición">
+                        <img src="{{ url_for('static', filename='snr logo.jpg') }}" alt="Certificado de Libertad y Tradición" loading="lazy" decoding="async">
                     </div>
                     <h3>Certificado de Libertad y Tradición</h3>
                     <p>Gestión rápida y segura de tu certificado inmobiliario directamente ante la Superintendencia de Notariado y Registro sin filas ni demoras.</p>
                 </div>
-                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20necesito%20gestionar%20un%20Certificado%20de%20Libertad%20y%20Tradición." class="btn" target="_blank">
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20necesito%20gestionar%20un%20Certificado%20de%20Libertad%20y%20Tradición." class="btn" target="_blank" rel="noopener noreferrer">
                     💬 Solicitar por WhatsApp
                 </a>
             </div>
@@ -309,12 +333,12 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='camara comercio cali.jpg') }}" alt="Cámara de Comercio">
+                        <img src="{{ url_for('static', filename='camara comercio cali.jpg') }}" alt="Cámara de Comercio" loading="lazy" decoding="async">
                     </div>
                     <h3>Cámara de Comercio y Trámites</h3>
                     <p>Asesoría y gestión en trámites mercantiles, certificados de existencia y representación comercial para tu negocio o empresa.</p>
                 </div>
-                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20necesito%20asistencia%20con%20trámites%20de%20Cámara%20de%20Comercio." class="btn" target="_blank">
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20necesito%20asistencia%20con%20trámites%20de%20Cámara%20de%20Comercio." class="btn" target="_blank" rel="noopener noreferrer">
                     💬 Solicitar por WhatsApp
                 </a>
             </div>
@@ -326,12 +350,12 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='Netflix logo.png') }}" alt="Netflix">
+                        <img src="{{ url_for('static', filename='Netflix logo.png') }}" alt="Netflix" loading="lazy" decoding="async">
                     </div>
                     <h3>Netflix 4K / Estándar</h3>
                     <p>Pantallas y perfiles de alta calidad con estabilidad garantizada, velocidad y soporte inmediato ante cualquier novedad.</p>
                 </div>
-                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20una%20cuenta%20de%20Netflix." class="btn" target="_blank">
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20una%20cuenta%20de%20Netflix." class="btn" target="_blank" rel="noopener noreferrer">
                     🛒 Comprar por WhatsApp
                 </a>
             </div>
@@ -339,12 +363,12 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='HBO-Max logo.jpg') }}" alt="Max / HBO">
+                        <img src="{{ url_for('static', filename='HBO-Max logo.jpg') }}" alt="Max / HBO" loading="lazy" decoding="async">
                     </div>
                     <h3>Max (HBO)</h3>
                     <p>Disfruta de las mejores series exclusivas, películas de estreno y contenido en máxima definición al instante.</p>
                 </div>
-                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Max." class="btn" target="_blank">
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Max." class="btn" target="_blank" rel="noopener noreferrer">
                     🛒 Comprar por WhatsApp
                 </a>
             </div>
@@ -352,12 +376,12 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='disney logo.jpg') }}" alt="Disney+">
+                        <img src="{{ url_for('static', filename='disney logo.jpg') }}" alt="Disney+" loading="lazy" decoding="async">
                     </div>
                     <h3>Disney+</h3>
                     <p>Todo el universo de Disney, Pixar, Marvel y Star al mejor precio del mercado local con entrega inmediata.</p>
                 </div>
-                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Disney+." class="btn" target="_blank">
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Disney+." class="btn" target="_blank" rel="noopener noreferrer">
                     🛒 Comprar por WhatsApp
                 </a>
             </div>
@@ -365,12 +389,12 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='prime video logo.png') }}" alt="Prime Video">
+                        <img src="{{ url_for('static', filename='prime video logo.png') }}" alt="Prime Video" loading="lazy" decoding="async">
                     </div>
                     <h3>Prime Video</h3>
                     <p>Películas, series galardonadas y tus envíos preferenciales con acceso inmediato y cuentas seguras.</p>
                 </div>
-                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Prime%20Video." class="btn" target="_blank">
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Prime%20Video." class="btn" target="_blank" rel="noopener noreferrer">
                     🛒 Comprar por WhatsApp
                 </a>
             </div>
@@ -378,12 +402,12 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='youtube premium.png') }}" alt="YouTube Premium">
+                        <img src="{{ url_for('static', filename='youtube premium.png') }}" alt="YouTube Premium" loading="lazy" decoding="async">
                     </div>
                     <h3>YouTube Premium</h3>
                     <p>Videos sin interrupciones publicitarias, reproducción en segundo plano y YouTube Music incluido sin límites.</p>
                 </div>
-                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20YouTube%20Premium." class="btn" target="_blank">
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20YouTube%20Premium." class="btn" target="_blank" rel="noopener noreferrer">
                     🛒 Comprar por WhatsApp
                 </a>
             </div>
@@ -391,12 +415,12 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='iptv logo.png') }}" alt="IPTV Premium">
+                        <img src="{{ url_for('static', filename='iptv logo.png') }}" alt="IPTV Premium" loading="lazy" decoding="async">
                     </div>
                     <h3>Servicio IPTV Premium</h3>
                     <p>Parrilla completa de canales nacionales e internacionales, deportes en vivo y eventos especiales en tu Smart TV.</p>
                 </div>
-                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20información%20sobre%20el%20servicio%20IPTV." class="btn" target="_blank">
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20información%20sobre%20el%20servicio%20IPTV." class="btn" target="_blank" rel="noopener noreferrer">
                     🛒 Cotizar IPTV por WhatsApp
                 </a>
             </div>
@@ -407,7 +431,7 @@
 
         <div class="support-banner">
             <div class="support-img-box">
-                <img src="{{ url_for('static', filename='soporte pc y celular.jpg') }}" alt="Soporte Técnico PC y Celulares">
+                <img src="{{ url_for('static', filename='soporte pc y celular.jpg') }}" alt="Soporte Técnico PC y Celulares" loading="lazy" decoding="async">
             </div>
             <div class="support-content">
                 <div>
@@ -421,7 +445,7 @@
                         <li><span>✔</span> Instalación de Cámaras de Seguridad (CCTV)</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20necesito%20soporte%20técnico%20para%20mi%20computador%20o%20celular." class="btn" target="_blank">
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20necesito%20soporte%20técnico%20para%20mi%20computador%20o%20celular." class="btn" target="_blank" rel="noopener noreferrer">
                     💬 Cotizar Soporte por WhatsApp
                 </a>
             </div>
@@ -435,10 +459,10 @@
                     <h3>Soluciones Tecnológicas a Medida</h3>
                     <p>¿Necesitas soporte de software a distancia, configuraciones de red o asesoría digital personalizada? Consúltanos lo que requieras con atención inmediata.</p>
                 </div>
-                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20tengo%20una%20consulta%20sobre%20otro%20servicio%20tecnológico." class="btn" target="_blank">
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20tengo%20una%20consulta%20sobre%20otro%20servicio%20tecnológico." class="btn" target="_blank" rel="noopener noreferrer">
                     💬 Consultar por WhatsApp
                 </a>
-            </div>
+            </main>
         </div>
 
     </div>
@@ -450,13 +474,15 @@
     </footer>
 
     <script>
-    document.querySelectorAll('.card').forEach(card => {
-        card.addEventListener('mousemove', e => {
-            const rect = card.getBoundingClientRect();
-            card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-            card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('pointermove', event => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty('--mouse-x', `${event.clientX - rect.left}px`);
+                card.style.setProperty('--mouse-y', `${event.clientY - rect.top}px`);
+            });
         });
-    });
+    }
     </script>
 
 </body>
