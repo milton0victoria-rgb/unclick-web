@@ -8,4 +8,5 @@ def home():
     return render_template('index.html')
 @app.route("/googlefd946c634cabb459.html")
 def google_verification():
-    return render_template("googlefd946c634cabb459.html")
+    # Esto le dice a Google "aquí estoy", sin depender de leer el archivo
+    return "google-site-verification: googlefd946c634cabb459.html"
