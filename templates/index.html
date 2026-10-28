@@ -26,7 +26,6 @@
             --text-main: #f8f9fa;
             --text-muted: #b0b0bc;
             --whatsapp: #25d366;
-            /* MEJORA 2: Verde más oscuro para cumplir contraste */
             --whatsapp-dark: #128c3e; 
         }
         * { box-sizing: border-box; }
@@ -54,11 +53,49 @@
             100% { background-position: 0% 100%; }
         }
 
+        /* --- NUEVO: MENÚ DE NAVEGACIÓN FLOTANTE --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(5, 5, 7, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--gold);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .navbar-brand {
+            font-family: 'Sora', sans-serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--gold);
+            text-decoration: none;
+        }
+        .navbar-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .navbar-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .navbar-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Ajuste para que el menú no tape el contenido inicial */
         header {
             background: rgba(5, 5, 7, 0.92);
             backdrop-filter: blur(10px);
             border-bottom: 3px solid var(--gold);
-            padding: 3rem 1rem 2rem 1rem;
+            padding: 7rem 1rem 3rem 1rem; /* Aumentamos el padding superior por el menú fijo */
             text-align: center;
             position: relative;
             z-index: 2;
@@ -170,7 +207,6 @@
         }
         .card:hover img { transform: scale(1.08); }
         
-        /* Etiquetas de Precio - MEJORA 3 y 4 */
         .price-tag {
             display: inline-block;
             background: rgba(37, 211, 102, 0.15);
@@ -233,7 +269,6 @@
         }
         .support-list li span { color: var(--whatsapp); font-weight: bold; }
         
-        /* MEJORA 2: Botones con mejor contraste */
         .btn {
             display: flex;
             align-items: center;
@@ -259,7 +294,60 @@
         }
         a:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 4px; }
 
-        /* --- NUEVA SECCIÓN: Buzón de sugerencias / Consultas --- */
+        /* --- NUEVO: PREGUNTAS FRECUENTES (FAQ) --- */
+        .faq-section {
+            margin-top: 2rem;
+        }
+        .faq-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: transparent;
+            border: none;
+            color: var(--text-main);
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        .faq-question:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+        .faq-question i {
+            color: var(--gold);
+            transition: transform 0.3s ease;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: rgba(0,0,0,0.2);
+        }
+        .faq-answer p {
+            padding: 0 1.2rem 1.2rem 1.2rem;
+            margin: 0;
+            color: var(--text-muted);
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* Ajusta si la respuesta es muy larga */
+            padding-top: 1rem;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
         .suggestion-box {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
@@ -319,7 +407,6 @@
             gap: 8px;
         }
 
-        /* --- BOTÓN FLOTANTE DE WHATSAPP --- */
         .whatsapp-float {
             position: fixed;
             width: 60px;
@@ -350,8 +437,13 @@
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
+        @media (max-width: 768px) {
+            .navbar { padding: 1rem; flex-direction: column; gap: 0.5rem; }
+            .navbar-links { gap: 1rem; font-size: 0.85rem; flex-wrap: wrap; justify-content: center; }
+            header { padding-top: 9rem; }
+        }
+
         @media (max-width: 600px) {
-            header { padding: 2rem 1rem 1.5rem; }
             .logo-img { max-width: 180px; }
             header p { font-size: 0.95rem; }
             h2 { font-size: 1.25rem; margin-top: 2.5rem; }
@@ -372,6 +464,17 @@
 </head>
 <body>
 
+    <!-- MENÚ FLOTANTE -->
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">@unclick</a>
+        <div class="navbar-links">
+            <a href="#tramites">Trámites</a>
+            <a href="#streaming">Streaming</a>
+            <a href="#soporte">Soporte PC</a>
+            <a href="#faq">Preguntas</a>
+        </div>
+    </nav>
+
     <header>
         <img src="{{ url_for('static', filename='unclick_logo_web.jpg') }}" alt="Logo @unclick" class="logo-img">
         <div class="badge">RESPALDADO Y REGISTRADO EN CÁMARA DE COMERCIO</div>
@@ -382,7 +485,7 @@
     <main class="container">
 
         <!-- TRÁMITES Y CERTIFICADOS VIRTUALES -->
-        <h2><span>▪</span> Trámites y Certificados Virtuales</h2>
+        <h2 id="tramites"><span>▪</span> Trámites y Certificados Virtuales</h2>
         <div class="grid">
             <div class="card">
                 <div>
@@ -414,7 +517,7 @@
         </div>
 
         <!-- STREAMING Y PLATAFORMAS -->
-        <h2><span>▪</span> Streaming y Entretenimiento Digital</h2>
+        <h2 id="streaming"><span>▪</span> Streaming y Entretenimiento Digital</h2>
         <div class="grid">
             <div class="card">
                 <div>
@@ -451,7 +554,6 @@
                         <img src="{{ url_for('static', filename='disney logo.jpg') }}" alt="Disney+" loading="lazy" decoding="async">
                     </div>
                     <h3>Disney+</h3>
-                    <!-- MEJORA 4: Texto más directo -->
                     <span class="price-tag">Entrega inmediata</span>
                     <p>Todo el universo de Disney, Pixar, Marvel y Star. Disfruta de estrenos y clásicos con la mejor atención personalizada.</p>
                 </div>
@@ -504,7 +606,7 @@
         </div>
 
         <!-- SOPORTE TÉCNICO DESTACADO -->
-        <h2><span>▪</span> Soporte Técnico PC & Celulares</h2>
+        <h2 id="soporte"><span>▪</span> Soporte Técnico PC & Celulares</h2>
 
         <div class="support-banner">
             <div class="support-img-box">
@@ -526,6 +628,47 @@
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20necesito%20soporte%20técnico%20para%20mi%20computador%20o%20celular." class="btn" target="_blank" rel="noopener noreferrer">
                     <i class="fa-solid fa-screwdriver-wrench" style="font-size: 1.2rem;"></i> Cotizar Soporte por WhatsApp
                 </a>
+            </div>
+        </div>
+
+        <!-- PREGUNTAS FRECUENTES (FAQ) -->
+        <h2 id="faq"><span>▪</span> Preguntas Frecuentes</h2>
+        <div class="faq-section">
+            <div class="faq-item">
+                <button class="faq-question">
+                    ¿Hacen domicilios en Cali y Jamundí?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Sí, contamos con servicio a domicilio para soporte técnico de PC y celulares en toda la ciudad de Cali y Jamundí. Coordinamos la visita por WhatsApp.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    ¿Qué métodos de pago aceptan?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>Aceptamos transferencias bancarias (Nequi, Daviplata, Bancolombia) y efectivo. Para cuentas de streaming, el pago es anticipado para garantizar la entrega inmediata.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    ¿Cuánto tarda el envío de una cuenta de streaming?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>El envío es inmediato. Una vez confirmado el pago, recibes los datos de acceso en tu WhatsApp en cuestión de minutos.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question">
+                    ¿Los trámites de Cámara de Comercio son presenciales?
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-answer">
+                    <p>No, hacemos toda la gestión de manera virtual por ti. Tú nos envías los documentos, nosotros hacemos el trámite y te entregamos el certificado digital sin que tengas que hacer filas.</p>
+                </div>
             </div>
         </div>
 
@@ -590,23 +733,29 @@
 
     // Lógica para el buzón de sugerencias (envía a WhatsApp)
     document.getElementById('form-sugerencia').addEventListener('submit', function(e) {
-        e.preventDefault(); // Evita que la página se recargue
-        
+        e.preventDefault(); 
         const nombre = document.getElementById('nombre').value;
         const mensaje = document.getElementById('mensaje').value;
-        
-        // Armamos el texto que llegará a tu WhatsApp
         let texto = `Hola @unclick, mi nombre es ${nombre || 'un cliente'}. `;
         texto += `Mi consulta/sugerencia es: ${mensaje}`;
-        
-        // Codificamos el texto para que viaje seguro en la URL
         const textoCodificado = encodeURIComponent(texto);
-        
-        // Abrimos WhatsApp con el mensaje listo
         window.open(`https://wa.me/573178170622?text=${textoCodificado}`, '_blank');
-        
-        // Limpiamos el formulario
         this.reset();
+    });
+
+    // Lógica para abrir y cerrar las Preguntas Frecuentes (FAQ)
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', () => {
+            const faqItem = button.parentElement;
+            // Cierra las otras preguntas abiertas
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+            // Abre o cierra la pregunta actual
+            faqItem.classList.toggle('active');
+        });
     });
     </script>
 
