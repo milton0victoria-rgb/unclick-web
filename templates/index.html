@@ -26,7 +26,8 @@
             --text-main: #f8f9fa;
             --text-muted: #b0b0bc;
             --whatsapp: #25d366;
-            --whatsapp-hover: #1da851;
+            /* MEJORA 2: Verde más oscuro para cumplir contraste */
+            --whatsapp-dark: #128c3e; 
         }
         * { box-sizing: border-box; }
 
@@ -169,7 +170,7 @@
         }
         .card:hover img { transform: scale(1.08); }
         
-        /* Etiquetas de Precio */
+        /* Etiquetas de Precio - MEJORA 3 y 4 */
         .price-tag {
             display: inline-block;
             background: rgba(37, 211, 102, 0.15);
@@ -232,12 +233,13 @@
         }
         .support-list li span { color: var(--whatsapp); font-weight: bold; }
         
+        /* MEJORA 2: Botones con mejor contraste */
         .btn {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background: linear-gradient(135deg, #25d366, #1da851);
+            background: linear-gradient(135deg, #1da851, var(--whatsapp-dark));
             color: white;
             padding: 0.9rem 1rem;
             border-radius: 8px;
@@ -251,11 +253,45 @@
             transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
         }
         .btn:hover {
-            background: linear-gradient(135deg, #1da851, #178a45);
+            background: linear-gradient(135deg, var(--whatsapp-dark), #0a6e2f);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
             transform: translateY(-2px) scale(1.02);
         }
         a:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 4px; }
+
+        /* --- NUEVA SECCIÓN: Buzón de sugerencias / Consultas --- */
+        .suggestion-box {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--gold);
+            border-radius: 14px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .suggestion-box h3 { color: var(--gold); font-size: 1.5rem; margin-top: 0; }
+        .suggestion-box p { color: var(--text-muted); margin-bottom: 1.5rem; }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.3s;
+        }
+        .input-group input:focus, .input-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
         
         footer {
             text-align: center;
@@ -305,7 +341,7 @@
             animation: pulse 2s infinite;
         }
         .whatsapp-float:hover {
-            background-color: #1da851;
+            background-color: var(--whatsapp-dark);
             transform: scale(1.1);
         }
         @keyframes pulse {
@@ -321,6 +357,7 @@
             h2 { font-size: 1.25rem; margin-top: 2.5rem; }
             .container { padding: 1.5rem 1rem; }
             .whatsapp-float { width: 50px; height: 50px; font-size: 25px; bottom: 20px; right: 20px; }
+            .suggestion-box { padding: 1.5rem; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -385,7 +422,8 @@
                         <img src="{{ url_for('static', filename='Netflix logo.png') }}" alt="Netflix" loading="lazy" decoding="async">
                     </div>
                     <h3>Netflix 4K / Estándar</h3>
-                    <span class="price-tag">Desde $10.000 / Distribuidores</span>
+                    <span class="price-tag">Precio minorista: $15.000</span>
+                    <span class="price-tag" style="background: rgba(212,175,55,0.15); color: var(--gold); border-color: rgba(212,175,55,0.3);">Distribuidores: $10.000</span>
                     <p>Pantallas y perfiles de alta calidad con estabilidad garantizada, velocidad y soporte inmediato ante cualquier novedad.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20una%20cuenta%20de%20Netflix." class="btn" target="_blank" rel="noopener noreferrer">
@@ -413,10 +451,10 @@
                         <img src="{{ url_for('static', filename='disney logo.jpg') }}" alt="Disney+" loading="lazy" decoding="async">
                     </div>
                     <h3>Disney+</h3>
-                    <span class="price-tag">El mejor precio local</span>
-                    <p>Todo el universo de Disney, Pixar, Marvel y Star al mejor precio del mercado local con entrega inmediata.</p>
+                    <!-- MEJORA 4: Texto más directo -->
+                    <span class="price-tag">Entrega inmediata</span>
+                    <p>Todo el universo de Disney, Pixar, Marvel y Star. Disfruta de estrenos y clásicos con la mejor atención personalizada.</p>
                 </div>
-                <!-- CORRECCIÓN DE LA IA: Cambiar + por %2B -->
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Disney%2B." class="btn" target="_blank" rel="noopener noreferrer">
                     <i class="fa-solid fa-cart-shopping" style="font-size: 1.2rem;"></i> Comprar por WhatsApp
                 </a>
@@ -491,18 +529,20 @@
             </div>
         </div>
 
-        <!-- Y MUCHO MÁS... -->
-        <h2><span>▪</span> Y mucho más...</h2>
-        <div class="grid">
-            <div class="card">
-                <div>
-                    <h3>Soluciones Tecnológicas a Medida</h3>
-                    <p>¿Necesitas soporte de software a distancia, configuraciones de red o asesoría digital personalizada? Consúltanos lo que requieras con atención inmediata.</p>
-                </div>
-                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20tengo%20una%20consulta%20sobre%20otro%20servicio%20tecnológico." class="btn" target="_blank" rel="noopener noreferrer">
-                    <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Consultar por WhatsApp
-                </a>
-            </div>
+        <!-- NUEVA SECCIÓN: Buzón de Sugerencias / Preguntas -->
+        <h2><span>▪</span> ¿Necesitas una solución rápida?</h2>
+        <div class="suggestion-box">
+            <h3>Déjanos tu consulta o sugerencia</h3>
+            <p>¿Tienes un problema técnico, quieres saber cómo poner tu iPhone en modo recovery, o tienes una sugerencia para nosotros? Escríbelo aquí y te responderemos al instante por WhatsApp.</p>
+            
+            <!-- Formulario que envía directo a WhatsApp -->
+            <form class="input-group" id="form-sugerencia">
+                <input type="text" id="nombre" placeholder="Tu nombre (opcional)">
+                <textarea id="mensaje" rows="4" placeholder="Escribe aquí tu consulta técnica, sugerencia o el problema que tengas..." required></textarea>
+                <button type="submit" class="btn" style="margin-top: 0;">
+                    <i class="fa-solid fa-paper-plane"></i> Enviar consulta a WhatsApp
+                </button>
+            </form>
         </div>
 
     </main>
@@ -537,6 +577,7 @@
     </a>
 
     <script>
+    // Animación del brillo de las tarjetas
     if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('pointermove', event => {
@@ -546,6 +587,27 @@
             });
         });
     }
+
+    // Lógica para el buzón de sugerencias (envía a WhatsApp)
+    document.getElementById('form-sugerencia').addEventListener('submit', function(e) {
+        e.preventDefault(); // Evita que la página se recargue
+        
+        const nombre = document.getElementById('nombre').value;
+        const mensaje = document.getElementById('mensaje').value;
+        
+        // Armamos el texto que llegará a tu WhatsApp
+        let texto = `Hola @unclick, mi nombre es ${nombre || 'un cliente'}. `;
+        texto += `Mi consulta/sugerencia es: ${mensaje}`;
+        
+        // Codificamos el texto para que viaje seguro en la URL
+        const textoCodificado = encodeURIComponent(texto);
+        
+        // Abrimos WhatsApp con el mensaje listo
+        window.open(`https://wa.me/573178170622?text=${textoCodificado}`, '_blank');
+        
+        // Limpiamos el formulario
+        this.reset();
+    });
     </script>
 
 </body>
