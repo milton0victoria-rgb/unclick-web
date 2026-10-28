@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@unclick - Soporte Técnico, Streaming y Trámites en Cali y Jamundí</title>
-    <meta name="description" content="Soporte técnico para PC y celulares, servicios de streaming y trámites digitales en Cali y Jamundí. Atención personalizada por WhatsApp.">
+    <meta name="description" content="Soporte técnico para PC y celulares, servicios de streaming, trámites digitales y diseño de páginas web en Cali y Jamundí. Atención personalizada por WhatsApp.">
     
     <!-- SEO Mejorado: Canonical y Open Graph -->
     <link rel="canonical" href="https://unclick-web.onrender.com/">
@@ -16,7 +16,7 @@
     
     <link rel="icon" href="{{ url_for('static', filename='unclick_logo_web.jpg') }}" type="image/jpeg">
     
-    <!-- Fuentes e Íconos (Con preconnect añadido) -->
+    <!-- Fuentes e Íconos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -165,10 +165,7 @@
         }
         h2 span { -webkit-text-fill-color: var(--gold); color: var(--gold); font-size: 1.2rem; }
         
-        /* Mejora de accesibilidad: Evita que el menú fijo tape los títulos */
-        h2[id] {
-            scroll-margin-top: 100px;
-        }
+        h2[id] { scroll-margin-top: 100px; }
 
         .grid {
             display: grid;
@@ -316,7 +313,6 @@
             transform: translateY(-2px) scale(1.02);
         }
         
-        /* Mejora de accesibilidad: Foco visible en botones */
         a:focus-visible,
         button:focus-visible { 
             outline: 3px solid var(--gold-light); 
@@ -365,7 +361,7 @@
             color: var(--text-muted);
         }
         .faq-item.active .faq-answer {
-            max-height: 200px;
+            max-height: 500px; /* Aumentado para que no se corte el texto */
             padding-top: 1rem;
         }
         .faq-item.active .faq-question i {
@@ -405,7 +401,6 @@
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
         }
         
-        /* Mejora de accesibilidad: Ocultar etiquetas visualmente pero dejarlas para lectores */
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -501,13 +496,13 @@
 </head>
 <body>
 
-    <!-- Mejora de accesibilidad: aria-label en el menú -->
     <nav class="navbar" aria-label="Navegación principal">
         <a href="#" class="navbar-brand">@unclick</a>
         <div class="navbar-links">
             <a href="#tramites">Trámites</a>
             <a href="#streaming">Streaming</a>
             <a href="#soporte">Soporte PC</a>
+            <a href="#diseno-web">Páginas Web</a> <!-- Nuevo enlace en el menú -->
             <a href="#faq">Preguntas</a>
         </div>
     </nav>
@@ -516,7 +511,7 @@
         <img src="{{ url_for('static', filename='unclick_logo_web.jpg') }}" alt="Logo @unclick" class="logo-img">
         <div class="badge">RESPALDADO Y REGISTRADO EN CÁMARA DE COMERCIO</div>
         <h1>Tecnología en su mejor versión</h1>
-        <p>Soporte, streaming y trámites digitales en Cali y Jamundí, con atención personalizada.</p>
+        <p>Soporte, streaming, trámites digitales y desarrollo web en Cali y Jamundí.</p>
     </header>
 
     <main class="container">
@@ -668,6 +663,25 @@
             </div>
         </div>
 
+        <!-- NUEVO SERVICIO: CREACIÓN DE PÁGINAS WEB -->
+        <h2 id="diseno-web"><span>▪</span> Desarrollo Web para tu Negocio</h2>
+        <div class="grid">
+            <div class="card" style="border-color: var(--gold); background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(15,15,20,0.9));">
+                <div>
+                    <div class="card-img-container" style="background: transparent; border: none; height: auto; padding: 0;">
+                        <!-- Aquí llamamos a tu imagen desde la carpeta static -->
+                        <img src="{{ url_for('static', filename='pagina.jpg') }}" alt="Diseño de Páginas Web" loading="lazy" decoding="async" style="max-height: 200px; border-radius: 8px;">
+                    </div>
+                    <h3>Diseño de Páginas Web Profesionales</h3>
+                    <span class="price-tag" style="background: rgba(212,175,55,0.2); color: var(--gold-light); border-color: var(--gold); margin-top: 1rem;">Lleva tu negocio al siguiente nivel</span>
+                    <p>Creamos la página web de tus sueños. Diseño moderno, rápido, optimizado para Google, con botón de WhatsApp y dominio propio. ¡Haz que tu negocio luzca como una gran empresa!</p>
+                </div>
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20cotizar%20el%20dise%C3%B1o%20de%20una%20p%C3%A1gina%20web%20para%20mi%20negocio." class="btn" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(135deg, #d4af37, #b5952f); box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);">
+                    <i class="fa-solid fa-rocket" style="font-size: 1.2rem;"></i> Cotizar mi Página Web
+                </a>
+            </div>
+        </div>
+
         <!-- PREGUNTAS FRECUENTES (FAQ) -->
         <h2 id="faq"><span>▪</span> Preguntas Frecuentes</h2>
         <div class="faq-section">
@@ -709,13 +723,12 @@
             </div>
         </div>
 
-        <!-- NUEVA SECCIÓN: Buzón de Sugerencias / Preguntas -->
+        <!-- SECCIÓN: Buzón de Sugerencias / Preguntas -->
         <h2><span>▪</span> ¿Necesitas una solución rápida?</h2>
         <div class="suggestion-box">
             <h3>Déjanos tu consulta o sugerencia</h3>
             <p>¿Tienes un problema técnico, quieres saber cómo poner tu iPhone en modo recovery, o tienes una sugerencia para nosotros? Escríbelo aquí y te responderemos al instante por WhatsApp.</p>
             
-            <!-- Formulario con etiquetas de accesibilidad (visually-hidden) -->
             <form class="input-group" id="form-sugerencia">
                 <label class="visually-hidden" for="nombre">Tu nombre (opcional)</label>
                 <input type="text" id="nombre" name="nombre" placeholder="Tu nombre (opcional)" autocomplete="name" maxlength="60">
@@ -738,14 +751,17 @@
         </p>
         <p style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
             
-            <a href="https://www.instagram.com/aunclickjamundi?igsh=MWNvZncyaTRvYzAzbw==" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+            <!-- Enlace de Facebook Actualizado -->
+            <a href="https://www.facebook.com/share/1Ew2GWapcQ/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                 <i class="fa-brands fa-facebook" style="font-size: 1.2rem; color: #1877f2;"></i> Facebook
             </a> 
             
+            <!-- Enlace de Instagram -->
             <a href="https://www.instagram.com/aunclickjamundi?igsh=MWNvZncyaTRvYzAzbw==" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                 <i class="fa-brands fa-instagram" style="font-size: 1.2rem; color: #E1306C;"></i> Instagram
             </a>
             
+            <!-- Enlace de Correo -->
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=AUNCLICK9@GMAIL.COM" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                 <i class="fa-solid fa-envelope" style="color: var(--gold);"></i> Correo
             </a>
@@ -758,6 +774,7 @@
     </a>
 
     <script>
+    // Animación del brillo de las tarjetas
     if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('pointermove', event => {
@@ -768,7 +785,7 @@
         });
     }
 
-    // Formulario: Se mantiene el texto si hay error, y se abre WhatsApp de forma segura
+    // Lógica para el buzón de sugerencias (envía a WhatsApp)
     document.getElementById('form-sugerencia').addEventListener('submit', function(e) {
         e.preventDefault(); 
         const nombre = document.getElementById('nombre').value;
@@ -776,16 +793,10 @@
         let texto = `Hola @unclick, mi nombre es ${nombre || 'un cliente'}. `;
         texto += `Mi consulta/sugerencia es: ${mensaje}`;
         const textoCodificado = encodeURIComponent(texto);
-        
-        window.open(
-            `https://wa.me/573178170622?text=${textoCodificado}`, 
-            '_blank', 
-            'noopener,noreferrer'
-        );
-        // Se ha eliminado this.reset() para evitar que el cliente pierda su mensaje
+        window.open(`https://wa.me/573178170622?text=${textoCodificado}`, '_blank', 'noopener,noreferrer');
     });
 
-    // FAQ: Accesibilidad mejorada con aria-expanded
+    // Lógica para abrir y cerrar las Preguntas Frecuentes (FAQ)
     document.querySelectorAll('.faq-question').forEach(button => {
         button.addEventListener('click', () => {
             const faqItem = button.parentElement;
