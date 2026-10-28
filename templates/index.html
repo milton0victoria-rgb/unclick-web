@@ -20,13 +20,13 @@
     <style>
         :root {
             --bg-color: #050507;
-            --card-bg: rgba(15, 15, 20, 0.7); /* Más translúcido para el efecto cristal */
+            --card-bg: rgba(15, 15, 20, 0.7); 
             --gold: #d4af37;
             --gold-light: #f3e5ab;
             --text-main: #f8f9fa;
             --text-muted: #b0b0bc;
             --whatsapp: #25d366;
-            --whatsapp-hover: #20ba5a;
+            --whatsapp-hover: #1da851; /* Verde más oscuro para contraste */
         }
         * { box-sizing: border-box; }
 
@@ -45,7 +45,6 @@
         }
 
         h1, h2, h3 { font-family: 'Sora', 'Segoe UI', sans-serif; }
-
         header h1 { font-size: clamp(1.5rem, 4vw, 2.4rem); margin: 0.5rem 0; }
 
         @keyframes backgroundShift {
@@ -120,7 +119,7 @@
             position: relative;
             overflow: hidden;
             background-color: var(--card-bg);
-            backdrop-filter: blur(12px); /* Efecto cristal más fuerte */
+            backdrop-filter: blur(12px); 
             border-radius: 12px;
             padding: 1.8rem;
             box-shadow: 0 12px 25px rgba(0,0,0,0.6);
@@ -170,6 +169,19 @@
         }
         .card:hover img { transform: scale(1.08); }
         
+        /* Etiquetas de Precio */
+        .price-tag {
+            display: inline-block;
+            background: rgba(37, 211, 102, 0.15);
+            color: #25d366;
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
         .support-banner {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
@@ -225,7 +237,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background: linear-gradient(135deg, #25d366, #1fa855);
+            background: linear-gradient(135deg, #25d366, #1da851);
             color: white;
             padding: 0.9rem 1rem;
             border-radius: 8px;
@@ -239,7 +251,7 @@
             transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
         }
         .btn:hover {
-            background: linear-gradient(135deg, #20ba5a, #178a45);
+            background: linear-gradient(135deg, #1da851, #178a45);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
             transform: translateY(-2px) scale(1.02);
         }
@@ -293,7 +305,7 @@
             animation: pulse 2s infinite;
         }
         .whatsapp-float:hover {
-            background-color: #20ba5a;
+            background-color: #1da851;
             transform: scale(1.1);
         }
         @keyframes pulse {
@@ -341,7 +353,8 @@
                         <img src="{{ url_for('static', filename='snr logo.jpg') }}" alt="Certificado de Libertad y Tradición" loading="lazy" decoding="async">
                     </div>
                     <h3>Certificado de Libertad y Tradición</h3>
-                    <p>Gestión rápida y segura de tu certificado inmobiliario directamente ante la Superintendencia de Notariado y Registro sin filas ni demoras.</p>
+                    <span class="price-tag">Gestión rápida</span>
+                    <p>Gestión segura de tu certificado inmobiliario directamente ante la Superintendencia de Notariado y Registro sin filas ni demoras.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20necesito%20gestionar%20un%20Certificado%20de%20Libertad%20y%20Tradición." class="btn" target="_blank" rel="noopener noreferrer">
                     <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Solicitar por WhatsApp
@@ -354,6 +367,7 @@
                         <img src="{{ url_for('static', filename='camara comercio cali.jpg') }}" alt="Cámara de Comercio" loading="lazy" decoding="async">
                     </div>
                     <h3>Cámara de Comercio y Trámites</h3>
+                    <span class="price-tag">Asesoría incluida</span>
                     <p>Asesoría y gestión en trámites mercantiles, certificados de existencia y representación comercial para tu negocio o empresa.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20necesito%20asistencia%20con%20trámites%20de%20Cámara%20de%20Comercio." class="btn" target="_blank" rel="noopener noreferrer">
@@ -371,6 +385,7 @@
                         <img src="{{ url_for('static', filename='Netflix logo.png') }}" alt="Netflix" loading="lazy" decoding="async">
                     </div>
                     <h3>Netflix 4K / Estándar</h3>
+                    <span class="price-tag">Desde $10.000 / Distribuidores</span>
                     <p>Pantallas y perfiles de alta calidad con estabilidad garantizada, velocidad y soporte inmediato ante cualquier novedad.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20una%20cuenta%20de%20Netflix." class="btn" target="_blank" rel="noopener noreferrer">
@@ -384,6 +399,7 @@
                         <img src="{{ url_for('static', filename='HBO-Max logo.jpg') }}" alt="Max / HBO" loading="lazy" decoding="async">
                     </div>
                     <h3>Max (HBO)</h3>
+                    <span class="price-tag">Pregunta por combos</span>
                     <p>Disfruta de las mejores series exclusivas, películas de estreno y contenido en máxima definición al instante.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Max." class="btn" target="_blank" rel="noopener noreferrer">
@@ -397,9 +413,11 @@
                         <img src="{{ url_for('static', filename='disney logo.jpg') }}" alt="Disney+" loading="lazy" decoding="async">
                     </div>
                     <h3>Disney+</h3>
+                    <span class="price-tag">El mejor precio local</span>
                     <p>Todo el universo de Disney, Pixar, Marvel y Star al mejor precio del mercado local con entrega inmediata.</p>
                 </div>
-                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Disney+." class="btn" target="_blank" rel="noopener noreferrer">
+                <!-- CORRECCIÓN DE LA IA: Cambiar + por %2B -->
+                <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Disney%2B." class="btn" target="_blank" rel="noopener noreferrer">
                     <i class="fa-solid fa-cart-shopping" style="font-size: 1.2rem;"></i> Comprar por WhatsApp
                 </a>
             </div>
@@ -410,6 +428,7 @@
                         <img src="{{ url_for('static', filename='prime video logo.png') }}" alt="Prime Video" loading="lazy" decoding="async">
                     </div>
                     <h3>Prime Video</h3>
+                    <span class="price-tag">Acceso inmediato</span>
                     <p>Películas, series galardonadas y tus envíos preferenciales con acceso inmediato y cuentas seguras.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Prime%20Video." class="btn" target="_blank" rel="noopener noreferrer">
@@ -423,6 +442,7 @@
                         <img src="{{ url_for('static', filename='youtube premium.png') }}" alt="YouTube Premium" loading="lazy" decoding="async">
                     </div>
                     <h3>YouTube Premium</h3>
+                    <span class="price-tag">Sin anuncios</span>
                     <p>Videos sin interrupciones publicitarias, reproducción en segundo plano y YouTube Music incluido sin límites.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20YouTube%20Premium." class="btn" target="_blank" rel="noopener noreferrer">
@@ -436,6 +456,7 @@
                         <img src="{{ url_for('static', filename='iptv logo.png') }}" alt="IPTV Premium" loading="lazy" decoding="async">
                     </div>
                     <h3>Servicio IPTV Premium</h3>
+                    <span class="price-tag">Cotiza tu paquete</span>
                     <p>Parrilla completa de canales nacionales e internacionales, deportes en vivo y eventos especiales en tu Smart TV.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20información%20sobre%20el%20servicio%20IPTV." class="btn" target="_blank" rel="noopener noreferrer">
@@ -454,6 +475,7 @@
             <div class="support-content">
                 <div>
                     <h3>Servicio Profesional Garantizado</h3>
+                    <span class="price-tag">Precios según diagnóstico (Desde $50.000)</span>
                     <ul class="support-list">
                         <li><span>✔</span> Aumento de Memoria RAM</li>
                         <li><span>✔</span> Cambio e instalación de Discos Sólidos (SSD)</li>
@@ -490,13 +512,20 @@
         <p class="contact-info">
             <i class="fa-brands fa-whatsapp"></i> Contáctanos: 317 817 0622
         </p>
-        <p>
-            <a href="https://www.facebook.com/AUNCLICKJAMUNDI" target="_blank" style="color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                <i class="fa-brands fa-facebook" style="font-size: 1.1rem; color: #1877f2;"></i> A UN CLICK JAMUNDI
+        <p style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
+            <!-- Enlace de Facebook (si lo recuperas, solo cambia el link) -->
+            <a href="https://www.facebook.com/AUNCLICKJAMUNDI" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                <i class="fa-brands fa-facebook" style="font-size: 1.2rem; color: #1877f2;"></i> Facebook
             </a> 
-            | 
+            
+            <!-- Enlace de Instagram -->
+            <a href="https://www.instagram.com/aunclickjamundi?igsh=MWNvZncyaTRvYzAzbw==" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                <i class="fa-brands fa-instagram" style="font-size: 1.2rem; color: #E1306C;"></i> Instagram
+            </a>
+            
+            <!-- Enlace de Correo -->
             <a href="mailto:AUNCLICK9@GMAIL.COM" style="color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
-                <i class="fa-solid fa-envelope" style="color: var(--gold);"></i> AUNCLICK9@GMAIL.COM
+                <i class="fa-solid fa-envelope" style="color: var(--gold);"></i> Correo
             </a>
         </p>
     </footer>
