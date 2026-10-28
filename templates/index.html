@@ -5,17 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@unclick - Soporte Técnico, Streaming y Trámites en Cali y Jamundí</title>
     <meta name="description" content="Soporte técnico para PC y celulares, servicios de streaming y trámites digitales en Cali y Jamundí. Atención personalizada por WhatsApp.">
+    
+    <!-- SEO Mejorado: Canonical y Open Graph -->
+    <link rel="canonical" href="https://unclick-web.onrender.com/">
+    <meta property="og:url" content="https://unclick-web.onrender.com/">
     <meta property="og:title" content="@unclick - Tecnología, soporte y trámites">
     <meta property="og:description" content="Soporte técnico para PC y celulares, servicios de streaming y trámites digitales en Cali y Jamundí.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="{{ url_for('static', filename='unclick_logo_web.jpg', _external=True) }}">
+    
     <link rel="icon" href="{{ url_for('static', filename='unclick_logo_web.jpg') }}" type="image/jpeg">
     
-    <!-- Fuentes e Íconos -->
+    <!-- Fuentes e Íconos (Con preconnect añadido) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- SEO Mejorado: Datos Estructurados (Schema.org) para Negocio Local -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "@unclick",
+      "url": "https://unclick-web.onrender.com/",
+      "image": "{{ url_for('static', filename='unclick_logo_web.jpg', _external=True) }}",
+      "telephone": "+573178170622",
+      "areaServed": [
+        { "@type": "City", "name": "Cali" },
+        { "@type": "City", "name": "Jamundí" }
+      ]
+    }
+    </script>
     
     <style>
         :root {
@@ -53,7 +75,6 @@
             100% { background-position: 0% 100%; }
         }
 
-        /* --- NUEVO: MENÚ DE NAVEGACIÓN FLOTANTE --- */
         .navbar {
             position: fixed;
             top: 0;
@@ -86,16 +107,13 @@
             font-size: 0.95rem;
             transition: color 0.3s;
         }
-        .navbar-links a:hover {
-            color: var(--gold);
-        }
+        .navbar-links a:hover { color: var(--gold); }
 
-        /* Ajuste para que el menú no tape el contenido inicial */
         header {
             background: rgba(5, 5, 7, 0.92);
             backdrop-filter: blur(10px);
             border-bottom: 3px solid var(--gold);
-            padding: 7rem 1rem 3rem 1rem; /* Aumentamos el padding superior por el menú fijo */
+            padding: 7rem 1rem 3rem 1rem;
             text-align: center;
             position: relative;
             z-index: 2;
@@ -147,6 +165,11 @@
         }
         h2 span { -webkit-text-fill-color: var(--gold); color: var(--gold); font-size: 1.2rem; }
         
+        /* Mejora de accesibilidad: Evita que el menú fijo tape los títulos */
+        h2[id] {
+            scroll-margin-top: 100px;
+        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -292,12 +315,15 @@
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
             transform: translateY(-2px) scale(1.02);
         }
-        a:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 4px; }
-
-        /* --- NUEVO: PREGUNTAS FRECUENTES (FAQ) --- */
-        .faq-section {
-            margin-top: 2rem;
+        
+        /* Mejora de accesibilidad: Foco visible en botones */
+        a:focus-visible,
+        button:focus-visible { 
+            outline: 3px solid var(--gold-light); 
+            outline-offset: 4px; 
         }
+
+        .faq-section { margin-top: 2rem; }
         .faq-item {
             background: var(--card-bg);
             backdrop-filter: blur(10px);
@@ -322,9 +348,7 @@
             align-items: center;
             transition: background 0.3s;
         }
-        .faq-question:hover {
-            background: rgba(212, 175, 55, 0.05);
-        }
+        .faq-question:hover { background: rgba(212, 175, 55, 0.05); }
         .faq-question i {
             color: var(--gold);
             transition: transform 0.3s ease;
@@ -341,7 +365,7 @@
             color: var(--text-muted);
         }
         .faq-item.active .faq-answer {
-            max-height: 200px; /* Ajusta si la respuesta es muy larga */
+            max-height: 200px;
             padding-top: 1rem;
         }
         .faq-item.active .faq-question i {
@@ -381,6 +405,19 @@
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
         }
         
+        /* Mejora de accesibilidad: Ocultar etiquetas visualmente pero dejarlas para lectores */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         footer {
             text-align: center;
             padding: 2.5rem 1rem;
@@ -464,8 +501,8 @@
 </head>
 <body>
 
-    <!-- MENÚ FLOTANTE -->
-    <nav class="navbar">
+    <!-- Mejora de accesibilidad: aria-label en el menú -->
+    <nav class="navbar" aria-label="Navegación principal">
         <a href="#" class="navbar-brand">@unclick</a>
         <div class="navbar-links">
             <a href="#tramites">Trámites</a>
@@ -635,38 +672,38 @@
         <h2 id="faq"><span>▪</span> Preguntas Frecuentes</h2>
         <div class="faq-section">
             <div class="faq-item">
-                <button class="faq-question">
+                <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-respuesta-1">
                     ¿Hacen domicilios en Cali y Jamundí?
-                    <i class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                 </button>
-                <div class="faq-answer">
+                <div class="faq-answer" id="faq-respuesta-1" role="region" aria-hidden="true">
                     <p>Sí, contamos con servicio a domicilio para soporte técnico de PC y celulares en toda la ciudad de Cali y Jamundí. Coordinamos la visita por WhatsApp.</p>
                 </div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">
+                <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-respuesta-2">
                     ¿Qué métodos de pago aceptan?
-                    <i class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                 </button>
-                <div class="faq-answer">
+                <div class="faq-answer" id="faq-respuesta-2" role="region" aria-hidden="true">
                     <p>Aceptamos transferencias bancarias (Nequi, Daviplata, Bancolombia) y efectivo. Para cuentas de streaming, el pago es anticipado para garantizar la entrega inmediata.</p>
                 </div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">
+                <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-respuesta-3">
                     ¿Cuánto tarda el envío de una cuenta de streaming?
-                    <i class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                 </button>
-                <div class="faq-answer">
+                <div class="faq-answer" id="faq-respuesta-3" role="region" aria-hidden="true">
                     <p>El envío es inmediato. Una vez confirmado el pago, recibes los datos de acceso en tu WhatsApp en cuestión de minutos.</p>
                 </div>
             </div>
             <div class="faq-item">
-                <button class="faq-question">
+                <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-respuesta-4">
                     ¿Los trámites de Cámara de Comercio son presenciales?
-                    <i class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                 </button>
-                <div class="faq-answer">
+                <div class="faq-answer" id="faq-respuesta-4" role="region" aria-hidden="true">
                     <p>No, hacemos toda la gestión de manera virtual por ti. Tú nos envías los documentos, nosotros hacemos el trámite y te entregamos el certificado digital sin que tengas que hacer filas.</p>
                 </div>
             </div>
@@ -678,10 +715,14 @@
             <h3>Déjanos tu consulta o sugerencia</h3>
             <p>¿Tienes un problema técnico, quieres saber cómo poner tu iPhone en modo recovery, o tienes una sugerencia para nosotros? Escríbelo aquí y te responderemos al instante por WhatsApp.</p>
             
-            <!-- Formulario que envía directo a WhatsApp -->
+            <!-- Formulario con etiquetas de accesibilidad (visually-hidden) -->
             <form class="input-group" id="form-sugerencia">
-                <input type="text" id="nombre" placeholder="Tu nombre (opcional)">
-                <textarea id="mensaje" rows="4" placeholder="Escribe aquí tu consulta técnica, sugerencia o el problema que tengas..." required></textarea>
+                <label class="visually-hidden" for="nombre">Tu nombre (opcional)</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre (opcional)" autocomplete="name" maxlength="60">
+                
+                <label class="visually-hidden" for="mensaje">Tu consulta</label>
+                <textarea id="mensaje" name="mensaje" rows="4" placeholder="Escribe aquí tu consulta técnica, sugerencia o el problema que tengas..." maxlength="1000" required></textarea>
+                
                 <button type="submit" class="btn" style="margin-top: 0;">
                     <i class="fa-solid fa-paper-plane"></i> Enviar consulta a WhatsApp
                 </button>
@@ -697,17 +738,14 @@
         </p>
         <p style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
             
-            <!-- El logo de Facebook queda, pero el enlace va a tu Instagram por ahora -->
             <a href="https://www.instagram.com/aunclickjamundi?igsh=MWNvZncyaTRvYzAzbw==" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                 <i class="fa-brands fa-facebook" style="font-size: 1.2rem; color: #1877f2;"></i> Facebook
             </a> 
             
-            <!-- Enlace de Instagram -->
             <a href="https://www.instagram.com/aunclickjamundi?igsh=MWNvZncyaTRvYzAzbw==" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                 <i class="fa-brands fa-instagram" style="font-size: 1.2rem; color: #E1306C;"></i> Instagram
             </a>
             
-            <!-- Enlace de Correo (Ahora abre Gmail web en PC y celular) -->
             <a href="https://mail.google.com/mail/?view=cm&fs=1&to=AUNCLICK9@GMAIL.COM" target="_blank" rel="noopener noreferrer" style="color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
                 <i class="fa-solid fa-envelope" style="color: var(--gold);"></i> Correo
             </a>
@@ -720,7 +758,6 @@
     </a>
 
     <script>
-    // Animación del brillo de las tarjetas
     if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('pointermove', event => {
@@ -731,7 +768,7 @@
         });
     }
 
-    // Lógica para el buzón de sugerencias (envía a WhatsApp)
+    // Formulario: Se mantiene el texto si hay error, y se abre WhatsApp de forma segura
     document.getElementById('form-sugerencia').addEventListener('submit', function(e) {
         e.preventDefault(); 
         const nombre = document.getElementById('nombre').value;
@@ -739,22 +776,34 @@
         let texto = `Hola @unclick, mi nombre es ${nombre || 'un cliente'}. `;
         texto += `Mi consulta/sugerencia es: ${mensaje}`;
         const textoCodificado = encodeURIComponent(texto);
-        window.open(`https://wa.me/573178170622?text=${textoCodificado}`, '_blank');
-        this.reset();
+        
+        window.open(
+            `https://wa.me/573178170622?text=${textoCodificado}`, 
+            '_blank', 
+            'noopener,noreferrer'
+        );
+        // Se ha eliminado this.reset() para evitar que el cliente pierda su mensaje
     });
 
-    // Lógica para abrir y cerrar las Preguntas Frecuentes (FAQ)
+    // FAQ: Accesibilidad mejorada con aria-expanded
     document.querySelectorAll('.faq-question').forEach(button => {
         button.addEventListener('click', () => {
             const faqItem = button.parentElement;
-            // Cierra las otras preguntas abiertas
+            const isActive = faqItem.classList.contains('active');
+            
+            // Cierra todas
             document.querySelectorAll('.faq-item').forEach(item => {
-                if (item !== faqItem) {
-                    item.classList.remove('active');
-                }
+                item.classList.remove('active');
+                item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                item.querySelector('.faq-answer').setAttribute('aria-hidden', 'true');
             });
-            // Abre o cierra la pregunta actual
-            faqItem.classList.toggle('active');
+            
+            // Abre la seleccionada si no estaba activa
+            if (!isActive) {
+                faqItem.classList.add('active');
+                button.setAttribute('aria-expanded', 'true');
+                faqItem.querySelector('.faq-answer').setAttribute('aria-hidden', 'false');
+            }
         });
     });
     </script>
