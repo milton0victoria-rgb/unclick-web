@@ -10,13 +10,17 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="{{ url_for('static', filename='unclick_logo_web.jpg', _external=True) }}">
     <link rel="icon" href="{{ url_for('static', filename='unclick_logo_web.jpg') }}" type="image/jpeg">
+    
+    <!-- Fuentes e Íconos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
             --bg-color: #050507;
-            --card-bg: rgba(18, 18, 22, 0.88);
+            --card-bg: rgba(15, 15, 20, 0.7); /* Más translúcido para el efecto cristal */
             --gold: #d4af37;
             --gold-light: #f3e5ab;
             --text-main: #f8f9fa;
@@ -30,9 +34,9 @@
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
             background-image:
-                radial-gradient(circle at 15% 25%, rgba(212, 175, 55, 0.12) 0%, transparent 45%),
-                radial-gradient(circle at 85% 75%, rgba(56, 189, 248, 0.07) 0%, transparent 45%),
-                radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 60%);
+                radial-gradient(circle at 15% 25%, rgba(212, 175, 55, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(56, 189, 248, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
             background-size: 200% 200%;
             animation: backgroundShift 18s ease infinite alternate;
             color: var(--text-main);
@@ -40,14 +44,9 @@
             padding: 0;
         }
 
-        h1, h2, h3 {
-            font-family: 'Sora', 'Segoe UI', sans-serif;
-        }
+        h1, h2, h3 { font-family: 'Sora', 'Segoe UI', sans-serif; }
 
-        header h1 {
-            font-size: clamp(1.5rem, 4vw, 2.4rem);
-            margin: 0.5rem 0;
-        }
+        header h1 { font-size: clamp(1.5rem, 4vw, 2.4rem); margin: 0.5rem 0; }
 
         @keyframes backgroundShift {
             0% { background-position: 0% 0%; }
@@ -85,11 +84,8 @@
             margin-bottom: 0.8rem;
             letter-spacing: 1px;
         }
-        header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-top: 0.5rem;
-        }
+        header p { color: var(--text-muted); font-size: 1.1rem; margin-top: 0.5rem; }
+        
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -112,11 +108,8 @@
             align-items: center;
             gap: 10px;
         }
-        h2 span {
-            -webkit-text-fill-color: var(--gold);
-            color: var(--gold);
-            font-size: 1.2rem;
-        }
+        h2 span { -webkit-text-fill-color: var(--gold); color: var(--gold); font-size: 1.2rem; }
+        
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -127,7 +120,7 @@
             position: relative;
             overflow: hidden;
             background-color: var(--card-bg);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(12px); /* Efecto cristal más fuerte */
             border-radius: 12px;
             padding: 1.8rem;
             box-shadow: 0 12px 25px rgba(0,0,0,0.6);
@@ -150,9 +143,7 @@
             transition: opacity 0.3s;
             pointer-events: none;
         }
-        .card:hover::before {
-            opacity: 1;
-        }
+        .card:hover::before { opacity: 1; }
         .card:hover {
             transform: translateY(-6px);
             border-color: var(--gold);
@@ -177,11 +168,11 @@
             filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
             transition: transform 0.3s ease;
         }
-        .card:hover img {
-            transform: scale(1.08);
-        }
+        .card:hover img { transform: scale(1.08); }
+        
         .support-banner {
             background: var(--card-bg);
+            backdrop-filter: blur(12px);
             border: 2px solid var(--gold);
             border-radius: 14px;
             overflow: hidden;
@@ -191,9 +182,7 @@
             grid-template-columns: 1fr;
         }
         @media (min-width: 768px) {
-            .support-banner {
-                grid-template-columns: 1.2fr 1fr;
-            }
+            .support-banner { grid-template-columns: 1.2fr 1fr; }
         }
         .support-img-box {
             background: #000;
@@ -214,11 +203,8 @@
             flex-direction: column;
             justify-content: space-between;
         }
-        .support-content h3 {
-            color: var(--gold);
-            font-size: 1.6rem;
-            margin-top: 0;
-        }
+        .support-content h3 { color: var(--gold); font-size: 1.6rem; margin-top: 0; }
+        
         .support-list {
             list-style: none;
             padding: 0;
@@ -232,10 +218,8 @@
             align-items: center;
             gap: 8px;
         }
-        .support-list li span {
-            color: var(--whatsapp);
-            font-weight: bold;
-        }
+        .support-list li span { color: var(--whatsapp); font-weight: bold; }
+        
         .btn {
             display: flex;
             align-items: center;
@@ -259,10 +243,8 @@
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
             transform: translateY(-2px) scale(1.02);
         }
-        a:focus-visible {
-            outline: 3px solid var(--gold-light);
-            outline-offset: 4px;
-        }
+        a:focus-visible { outline: 3px solid var(--gold-light); outline-offset: 4px; }
+        
         footer {
             text-align: center;
             padding: 2.5rem 1rem;
@@ -283,6 +265,41 @@
             color: var(--gold);
             font-weight: bold;
             font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* --- BOTÓN FLOTANTE DE WHATSAPP --- */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        .whatsapp-float:hover {
+            background-color: #20ba5a;
+            transform: scale(1.1);
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
 
         @media (max-width: 600px) {
@@ -291,6 +308,7 @@
             header p { font-size: 0.95rem; }
             h2 { font-size: 1.25rem; margin-top: 2.5rem; }
             .container { padding: 1.5rem 1rem; }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 25px; bottom: 20px; right: 20px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -326,7 +344,7 @@
                     <p>Gestión rápida y segura de tu certificado inmobiliario directamente ante la Superintendencia de Notariado y Registro sin filas ni demoras.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20necesito%20gestionar%20un%20Certificado%20de%20Libertad%20y%20Tradición." class="btn" target="_blank" rel="noopener noreferrer">
-                    💬 Solicitar por WhatsApp
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Solicitar por WhatsApp
                 </a>
             </div>
 
@@ -339,7 +357,7 @@
                     <p>Asesoría y gestión en trámites mercantiles, certificados de existencia y representación comercial para tu negocio o empresa.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20necesito%20asistencia%20con%20trámites%20de%20Cámara%20de%20Comercio." class="btn" target="_blank" rel="noopener noreferrer">
-                    💬 Solicitar por WhatsApp
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Solicitar por WhatsApp
                 </a>
             </div>
         </div>
@@ -356,7 +374,7 @@
                     <p>Pantallas y perfiles de alta calidad con estabilidad garantizada, velocidad y soporte inmediato ante cualquier novedad.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20una%20cuenta%20de%20Netflix." class="btn" target="_blank" rel="noopener noreferrer">
-                    🛒 Comprar por WhatsApp
+                    <i class="fa-solid fa-cart-shopping" style="font-size: 1.2rem;"></i> Comprar por WhatsApp
                 </a>
             </div>
 
@@ -369,7 +387,7 @@
                     <p>Disfruta de las mejores series exclusivas, películas de estreno y contenido en máxima definición al instante.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Max." class="btn" target="_blank" rel="noopener noreferrer">
-                    🛒 Comprar por WhatsApp
+                    <i class="fa-solid fa-cart-shopping" style="font-size: 1.2rem;"></i> Comprar por WhatsApp
                 </a>
             </div>
 
@@ -382,7 +400,7 @@
                     <p>Todo el universo de Disney, Pixar, Marvel y Star al mejor precio del mercado local con entrega inmediata.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Disney+." class="btn" target="_blank" rel="noopener noreferrer">
-                    🛒 Comprar por WhatsApp
+                    <i class="fa-solid fa-cart-shopping" style="font-size: 1.2rem;"></i> Comprar por WhatsApp
                 </a>
             </div>
 
@@ -395,7 +413,7 @@
                     <p>Películas, series galardonadas y tus envíos preferenciales con acceso inmediato y cuentas seguras.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20cuenta%20de%20Prime%20Video." class="btn" target="_blank" rel="noopener noreferrer">
-                    🛒 Comprar por WhatsApp
+                    <i class="fa-solid fa-cart-shopping" style="font-size: 1.2rem;"></i> Comprar por WhatsApp
                 </a>
             </div>
 
@@ -408,7 +426,7 @@
                     <p>Videos sin interrupciones publicitarias, reproducción en segundo plano y YouTube Music incluido sin límites.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20comprar%20YouTube%20Premium." class="btn" target="_blank" rel="noopener noreferrer">
-                    🛒 Comprar por WhatsApp
+                    <i class="fa-solid fa-cart-shopping" style="font-size: 1.2rem;"></i> Comprar por WhatsApp
                 </a>
             </div>
 
@@ -421,7 +439,7 @@
                     <p>Parrilla completa de canales nacionales e internacionales, deportes en vivo y eventos especiales en tu Smart TV.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20quiero%20información%20sobre%20el%20servicio%20IPTV." class="btn" target="_blank" rel="noopener noreferrer">
-                    🛒 Cotizar IPTV por WhatsApp
+                    <i class="fa-solid fa-cart-shopping" style="font-size: 1.2rem;"></i> Cotizar IPTV por WhatsApp
                 </a>
             </div>
         </div>
@@ -446,7 +464,7 @@
                     </ul>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20necesito%20soporte%20técnico%20para%20mi%20computador%20o%20celular." class="btn" target="_blank" rel="noopener noreferrer">
-                    💬 Cotizar Soporte por WhatsApp
+                    <i class="fa-solid fa-screwdriver-wrench" style="font-size: 1.2rem;"></i> Cotizar Soporte por WhatsApp
                 </a>
             </div>
         </div>
@@ -460,18 +478,33 @@
                     <p>¿Necesitas soporte de software a distancia, configuraciones de red o asesoría digital personalizada? Consúltanos lo que requieras con atención inmediata.</p>
                 </div>
                 <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20tengo%20una%20consulta%20sobre%20otro%20servicio%20tecnológico." class="btn" target="_blank" rel="noopener noreferrer">
-                    💬 Consultar por WhatsApp
+                    <i class="fa-brands fa-whatsapp" style="font-size: 1.2rem;"></i> Consultar por WhatsApp
                 </a>
-            </main>
+            </div>
         </div>
 
-    </div>
+    </main>
 
     <footer>
         <p>&copy; 2026 @unclick - Todos los derechos reservados.</p>
-        <p class="contact-info">Contáctanos en WhatsApp: 317 817 0622</p>
-        <p>Facebook: A UN CLICK JAMUNDI | Correo: AUNCLICK9@GMAIL.COM</p>
+        <p class="contact-info">
+            <i class="fa-brands fa-whatsapp"></i> Contáctanos: 317 817 0622
+        </p>
+        <p>
+            <a href="https://www.facebook.com/AUNCLICKJAMUNDI" target="_blank" style="color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                <i class="fa-brands fa-facebook" style="font-size: 1.1rem; color: #1877f2;"></i> A UN CLICK JAMUNDI
+            </a> 
+            | 
+            <a href="mailto:AUNCLICK9@GMAIL.COM" style="color: var(--text-muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-envelope" style="color: var(--gold);"></i> AUNCLICK9@GMAIL.COM
+            </a>
+        </p>
     </footer>
+
+    <!-- Botón Flotante de WhatsApp -->
+    <a href="https://wa.me/573178170622?text=Hola%20@unclick,%20vengo%20de%20la%20p%C3%A1gina%20web%20y%20quiero%20informaci%C3%B3n." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <script>
     if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
