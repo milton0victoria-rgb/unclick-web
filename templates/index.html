@@ -12,9 +12,9 @@
     <meta property="og:title" content="@unclick - Tecnología, soporte y trámites">
     <meta property="og:description" content="Soporte técnico para PC y celulares, servicios de streaming y trámites digitales en Cali y Jamundí.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="{{ url_for('static', filename='unclick_logo_web.jpg', _external=True) }}">
+    <meta property="og:image" content="{{ url_for('static', filename='unclick_logo_web.webp', _external=True) }}">
     
-    <link rel="icon" href="{{ url_for('static', filename='unclick_logo_web.jpg') }}" type="image/jpeg">
+    <link rel="icon" href="{{ url_for('static', filename='unclick_logo_web.webp') }}" type="image/webp">
     
     <!-- Fuentes e Íconos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +30,7 @@
       "@type": "ProfessionalService",
       "name": "@unclick",
       "url": "https://unclick-web.onrender.com/",
-      "image": "{{ url_for('static', filename='unclick_logo_web.jpg', _external=True) }}",
+      "image": "{{ url_for('static', filename='unclick_logo_web.webp', _external=True) }}",
       "telephone": "+573178170622",
       "areaServed": [
         { "@type": "City", "name": "Cali" },
@@ -361,7 +361,7 @@
             color: var(--text-muted);
         }
         .faq-item.active .faq-answer {
-            max-height: 500px; /* Aumentado para que no se corte el texto */
+            max-height: 500px;
             padding-top: 1rem;
         }
         .faq-item.active .faq-question i {
@@ -502,14 +502,15 @@
             <a href="#tramites">Trámites</a>
             <a href="#streaming">Streaming</a>
             <a href="#soporte">Soporte PC</a>
-            <a href="#diseno-web">Páginas Web</a> <!-- Nuevo enlace en el menú -->
+            <a href="#diseno-web">Páginas Web</a>
             <a href="#faq">Preguntas</a>
         </div>
     </nav>
 
     <header>
-        <img src="{{ url_for('static', filename='unclick_logo_web.jpg') }}" alt="Logo @unclick" class="logo-img">
-        <div class="badge">RESPALDADO Y REGISTRADO EN CÁMARA DE COMERCIO</div>
+        <img src="{{ url_for('static', filename='unclick_logo_web.webp') }}" alt="Logo @unclick" class="logo-img">
+        <!-- Aquí está la insignia modificada que pediste -->
+        <div class="badge">⚡ ATENCIÓN RÁPIDA Y GARANTIZADA EN CALI Y JAMUNDÍ</div>
         <h1>Tecnología en su mejor versión</h1>
         <p>Soporte, streaming, trámites digitales y desarrollo web en Cali y Jamundí.</p>
     </header>
@@ -522,7 +523,7 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='snr logo.jpg') }}" alt="Certificado de Libertad y Tradición" loading="lazy" decoding="async">
+                        <img src="{{ url_for('static', filename='snr logo.webp') }}" alt="Certificado de Libertad y Tradición" loading="lazy" decoding="async">
                     </div>
                     <h3>Certificado de Libertad y Tradición</h3>
                     <span class="price-tag">Gestión rápida</span>
@@ -536,7 +537,7 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='camara comercio cali.jpg') }}" alt="Cámara de Comercio" loading="lazy" decoding="async">
+                        <img src="{{ url_for('static', filename='camara comercio cali.webp') }}" alt="Cámara de Comercio" loading="lazy" decoding="async">
                     </div>
                     <h3>Cámara de Comercio y Trámites</h3>
                     <span class="price-tag">Asesoría incluida</span>
@@ -554,7 +555,7 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='Netflix logo.png') }}" alt="Netflix" loading="lazy" decoding="async">
+                        <img src="{{ url_for('static', filename='Netflix logo.webp') }}" alt="Netflix" loading="lazy" decoding="async">
                     </div>
                     <h3>Netflix 4K / Estándar</h3>
                     <span class="price-tag">Precio minorista: $15.000</span>
@@ -569,7 +570,7 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='HBO-Max logo.jpg') }}" alt="Max / HBO" loading="lazy" decoding="async">
+                        <img src="{{ url_for('static', filename='HBO-Max logo.webp') }}" alt="Max / HBO" loading="lazy" decoding="async">
                     </div>
                     <h3>Max (HBO)</h3>
                     <span class="price-tag">Pregunta por combos</span>
@@ -583,7 +584,7 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='disney logo.jpg') }}" alt="Disney+" loading="lazy" decoding="async">
+                        <img src="{{ url_for('static', filename='disney logo.webp') }}" alt="Disney+" loading="lazy" decoding="async">
                     </div>
                     <h3>Disney+</h3>
                     <span class="price-tag">Entrega inmediata</span>
@@ -597,7 +598,7 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='prime video logo.png') }}" alt="Prime Video" loading="lazy" decoding="async">
+                        <img src="{{ url_for('static', filename='prime video logo.webp') }}" alt="Prime Video" loading="lazy" decoding="async">
                     </div>
                     <h3>Prime Video</h3>
                     <span class="price-tag">Acceso inmediato</span>
@@ -611,7 +612,7 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='youtube premium.png') }}" alt="YouTube Premium" loading="lazy" decoding="async">
+                        <img src="{{ url_for('static', filename='youtube premium.webp') }}" alt="YouTube Premium" loading="lazy" decoding="async">
                     </div>
                     <h3>YouTube Premium</h3>
                     <span class="price-tag">Sin anuncios</span>
@@ -625,7 +626,7 @@
             <div class="card">
                 <div>
                     <div class="card-img-container">
-                        <img src="{{ url_for('static', filename='iptv logo.png') }}" alt="IPTV Premium" loading="lazy" decoding="async">
+                        <img src="{{ url_for('static', filename='iptv logo.webp') }}" alt="IPTV Premium" loading="lazy" decoding="async">
                     </div>
                     <h3>Servicio IPTV Premium</h3>
                     <span class="price-tag">Cotiza tu paquete</span>
@@ -642,7 +643,7 @@
 
         <div class="support-banner">
             <div class="support-img-box">
-                <img src="{{ url_for('static', filename='soporte pc y celular.jpg') }}" alt="Soporte Técnico PC y Celulares" loading="lazy" decoding="async">
+                <img src="{{ url_for('static', filename='soporte pc y celular.webp') }}" alt="Soporte Técnico PC y Celulares" loading="lazy" decoding="async">
             </div>
             <div class="support-content">
                 <div>
@@ -669,8 +670,7 @@
             <div class="card" style="border-color: var(--gold); background: linear-gradient(135deg, rgba(212,175,55,0.1), rgba(15,15,20,0.9));">
                 <div>
                     <div class="card-img-container" style="background: transparent; border: none; height: auto; padding: 0;">
-                        <!-- Aquí llamamos a tu imagen desde la carpeta static -->
-                        <img src="{{ url_for('static', filename='pagina.jpg') }}" alt="Diseño de Páginas Web" loading="lazy" decoding="async" style="max-height: 200px; border-radius: 8px;">
+                        <img src="{{ url_for('static', filename='pagina.webp') }}" alt="Diseño de Páginas Web" loading="lazy" decoding="async" style="max-height: 200px; border-radius: 8px;">
                     </div>
                     <h3>Diseño de Páginas Web Profesionales</h3>
                     <span class="price-tag" style="background: rgba(212,175,55,0.2); color: var(--gold-light); border-color: var(--gold); margin-top: 1rem;">Lleva tu negocio al siguiente nivel</span>
@@ -774,7 +774,6 @@
     </a>
 
     <script>
-    // Animación del brillo de las tarjetas
     if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         document.querySelectorAll('.card').forEach(card => {
             card.addEventListener('pointermove', event => {
@@ -785,7 +784,6 @@
         });
     }
 
-    // Lógica para el buzón de sugerencias (envía a WhatsApp)
     document.getElementById('form-sugerencia').addEventListener('submit', function(e) {
         e.preventDefault(); 
         const nombre = document.getElementById('nombre').value;
@@ -796,20 +794,17 @@
         window.open(`https://wa.me/573178170622?text=${textoCodificado}`, '_blank', 'noopener,noreferrer');
     });
 
-    // Lógica para abrir y cerrar las Preguntas Frecuentes (FAQ)
     document.querySelectorAll('.faq-question').forEach(button => {
         button.addEventListener('click', () => {
             const faqItem = button.parentElement;
             const isActive = faqItem.classList.contains('active');
             
-            // Cierra todas
             document.querySelectorAll('.faq-item').forEach(item => {
                 item.classList.remove('active');
                 item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
                 item.querySelector('.faq-answer').setAttribute('aria-hidden', 'true');
             });
             
-            // Abre la seleccionada si no estaba activa
             if (!isActive) {
                 faqItem.classList.add('active');
                 button.setAttribute('aria-expanded', 'true');
